@@ -3,32 +3,37 @@
 // https://docs.astro.build/core-concepts/astro-components/
 
 export interface Props {
-	initialCount?: number;
+  initialCount?: number;
 }
 
-const { initialCount = 0 } = Astro.props;
+const { initialCount = 45 } = Astro.props;
 ---
 
-<div class="counter" x-data={`{ count: ${initialCount} }`}>
-	<button x-on:click="count--">-</button>
-	<pre x-text="count">{ initialCount }</pre>
-	<button x-on:click="count++">+</button>
+<div class="counter bg-red-300 text-white" x-data={`{ count: ${initialCount} }`}>
+  <button x-on:click="count--">-</button>
+  <pre x-text="count">{ initialCount }</pre>
+  <button x-on:click="count++">+</button>
 </div>
 
 <div class="counter-message">
-	<slot />
+  <slot />
 </div>
 
 <style>
-	.counter {
-		display: grid;
-		font-size: 2em;
-		grid-template-columns: repeat(3, minmax(0, 1fr));
-		margin-top: 2em;
-		place-items: center;
-	}
+  .counter {
+    display: grid;
+    font-size: 2em;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    margin-top: 2em;
+    place-items: center;
+  }
 
-	.counter-message {
-		text-align: center;
-	}
+  .counter-message {
+    text-align: center;
+  }
 </style>
+
+
+<script>
+  console.log('we can use script tags for client specific scripting needs');
+</script>
